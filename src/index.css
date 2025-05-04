@@ -1,0 +1,252 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 250 100% 99%;
+    --foreground: 262 40% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 262 40% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 262 40% 12%;
+
+    --primary: 265 83% 45%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 291 91% 65%;
+    --secondary-foreground: 262 40% 12%;
+
+    --muted: 250 20% 95%;
+    --muted-foreground: 263 25% 40%;
+
+    --accent: 262 83% 98%;
+    --accent-foreground: 265 83% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 250 20% 90%;
+    --input: 250 20% 90%;
+    --ring: 263 75% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 262 40% 12%;
+    --foreground: 210 40% 98%;
+
+    --card: 262 35% 16%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 262 35% 16%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263 75% 65%;
+    --primary-foreground: 262 40% 12%;
+
+    --secondary: 291 91% 65%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 262 30% 20%;
+    --muted-foreground: 250 20% 70%;
+
+    --accent: 262 35% 22%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 262 30% 25%;
+    --input: 262 30% 25%;
+    --ring: 263 75% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white bg-opacity-80 backdrop-blur-lg border border-white border-opacity-30 shadow-lg;
+  }
+  
+  .btn-gradient {
+    @apply bg-gradient-fundhub text-white font-medium py-2 px-6 rounded-lg transition-all hover:shadow-lg;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Special styles for blockchain elements */
+.blockchain-item {
+  @apply relative overflow-hidden rounded-xl;
+}
+
+.blockchain-item::before {
+  content: "";
+  @apply absolute inset-0 bg-gradient-to-r from-fundhub-primary/10 to-fundhub-secondary/10 opacity-0 transition-opacity duration-300;
+}
+
+.blockchain-item:hover::before {
+  @apply opacity-100;
+}
+
+/* Animated background for hero section */
+.animated-bg {
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Blockchain particles animation */
+.blockchain-particle {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(217, 70, 239, 0.05) 70%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0.7;
+  filter: blur(10px);
+  animation: float 8s infinite ease-in-out;
+}
+
+.blockchain-particle:nth-child(2) {
+  width: 180px;
+  height: 180px;
+  animation-delay: -2s;
+  animation-duration: 12s;
+}
+
+.blockchain-particle:nth-child(3) {
+  width: 120px;
+  height: 120px;
+  animation-delay: -4s;
+  animation-duration: 10s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(0) translateX(20px);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(20px) translateX(10px);
+    opacity: 0.5;
+  }
+}
+
+/* Token animation */
+.token-float {
+  animation: token-float 3s ease-in-out infinite;
+}
+
+@keyframes token-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Impact pulse animation */
+.impact-pulse {
+  animation: impact-pulse 2s infinite;
+}
+
+@keyframes impact-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Donation success animation */
+.donation-success {
+  animation: success-scale 0.5s ease-out;
+}
+
+@keyframes success-scale {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Crypto currency icons */
+.eth-icon {
+  background: linear-gradient(45deg, #627eea, #3c3c3d);
+}
+
+.btc-icon {
+  background: linear-gradient(45deg, #f7931a, #ff9900);
+}
+
+/* Web3 connection indicator */
+.connection-indicator {
+  @apply relative flex items-center;
+}
+
+.connection-indicator::before {
+  content: "";
+  @apply w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse;
+}
